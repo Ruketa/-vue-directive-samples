@@ -1,5 +1,6 @@
 <template>
   <div>
+    <reactives/>
     <von/>
     <vif/>
     <vshow/>
@@ -8,6 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import reactives from "../components/reactives.vue"
 import von  from "../components/von.vue";
 import vif  from "../components/vif.vue";
 import vshow  from "../components/vshow.vue";
@@ -15,7 +17,7 @@ import vshow  from "../components/vshow.vue";
 export default defineComponent({
   name: "Directives",
   components: {
-    von, vif, vshow
+    von, vif, vshow, reactives
   },
 });
 </script>

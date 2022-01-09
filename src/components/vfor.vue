@@ -1,8 +1,7 @@
 <template>
   <div>
-    <h1>v-show</h1>
+    <h1>v-for</h1>
     <p>click: increment the count value</p>
-    <p>if count value is even, show text "VSHOW"</p>
     <div class="hstack"> 
       <button class="hstack-item" @click="increment">increment</button> 
       <p class="hstack-item">count : {{count}}</p>
@@ -18,17 +17,10 @@ export default defineComponent({
   name: "Directives",
   setup() {
     const count = ref(0);
-    const isshow = ref(false);
     const increment = () =>{
       count.value++;
-      if(count.value % 2 == 0){
-        isshow.value = true;
-      }
-      else{
-        isshow.value = false;
-      }
     }
-    return { count, isshow, increment };
+    return { count, increment };
   },
 });
 </script>
