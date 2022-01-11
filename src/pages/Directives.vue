@@ -1,23 +1,27 @@
 <template>
   <div>
     <reactives/>
+    <compositionapi/>
     <von/>
     <vif/>
     <vshow/>
+    <vbind/>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import reactives from "../components/reactives.vue"
+import compositionapi from "../components/compositionapi.vue"
 import von  from "../components/von.vue";
 import vif  from "../components/vif.vue";
 import vshow  from "../components/vshow.vue";
+import vbind  from "../components/vbind.vue";
 
 export default defineComponent({
   name: "Directives",
   components: {
-    von, vif, vshow, reactives
+    von, vif, vshow, reactives, vbind, compositionapi
   },
 });
 </script>

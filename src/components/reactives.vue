@@ -3,14 +3,15 @@
     <h1>reactives</h1>
   </div>
   <div>
-    <p>plain count is {{ plainCount }} </p>
-    <p>ref count is {{ countRef}} || ref count2 is {{ count2Ref }} || sum is {{refSum()}}</p>
-    <p>reactive object is {{ reactiveObj.count }} || reactive object2 is {{ reactiveObj.count2 }} </p>
+    <p>plainCount is {{ plainCount }} </p>
+    <p>countRef is {{ countRef}} || count2Ref is {{ count2Ref }} || sum is {{refSum()}}</p>
+    <p>reactiveObj.count is {{ reactiveObj.count }} || reactiveObj.count2 is {{ reactiveObj.count2 }} </p>
+    <p>countComp is {{ countRef }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive } from "vue";
+import { defineComponent, ref, reactive, computed } from "vue";
 
 export default defineComponent({
   name: "reactives",
@@ -27,6 +28,12 @@ export default defineComponent({
         count: 0, 
         count2: plainCount // これはリアクティブにならない
       })
+    // computedオブジェクトの生成
+    let plainCount2 = 0
+    const countComp = computed({
+      get: () => plainCount2,
+      set: (val: number) => plainCount2 = val
+    }) 
 
     // 定期的なインクリメント
     // 2S毎
@@ -43,9 +50,10 @@ export default defineComponent({
     setInterval(() => {
       // Refオブジェクトには .valueで値にアクセスする
       count2Ref.value++
+      countComp.value++
     }, 4000)
 
-    return { plainCount, countRef, count2Ref, reactiveObj, refSum};
+    return { plainCount, countRef, count2Ref, reactiveObj, countComp, refSum};
   },
 });
 </script>
