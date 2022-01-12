@@ -5,6 +5,7 @@
     <von/>
     <vif/>
     <vshow/>
+    <vfor/>
     <vbind/>
   </div>
 </template>
@@ -17,11 +18,12 @@ import von  from "../components/von.vue";
 import vif  from "../components/vif.vue";
 import vshow  from "../components/vshow.vue";
 import vbind  from "../components/vbind.vue";
+import vfor  from "../components/vfor.vue";
 
 export default defineComponent({
   name: "Directives",
   components: {
-    von, vif, vshow, reactives, vbind, compositionapi
+    von, vif, vshow, reactives, vbind, compositionapi, vfor
   },
 });
 </script>
