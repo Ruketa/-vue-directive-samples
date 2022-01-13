@@ -7,6 +7,7 @@
     <vshow/>
     <vfor/>
     <vbind/>
+    <vmodel/>
   </div>
 </template>
 
@@ -19,11 +20,12 @@ import vif  from "../components/vif.vue";
 import vshow  from "../components/vshow.vue";
 import vbind  from "../components/vbind.vue";
 import vfor  from "../components/vfor.vue";
+import vmodel from "../components/vmodel.vue";
 
 export default defineComponent({
   name: "Directives",
   components: {
-    von, vif, vshow, reactives, vbind, compositionapi, vfor
+    von, vif, vshow, reactives, vbind, compositionapi, vfor, vmodel
   },
 });
 </script>

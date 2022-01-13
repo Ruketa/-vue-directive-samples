@@ -1,12 +1,12 @@
 <template>
   <div>
     <h1>v-if</h1>
-    <p>click: increment the count value</p>
-    <p>if count value is even, show text "VIF"</p>
     <div class="hstack"> 
       <button class="hstack-item" @click="increment">increment</button> 
       <p class="hstack-item">count : {{count}}</p>
-      <p v-if="isshow" class="hstack-item">VIF</p>
+      <p v-if="count == 0" class="hstack-item">ZERO</p>
+      <p v-else-if="isEven" class="hstack-item">EVEN</p>
+      <p v-else class="hstack-item">ODD</p>
     </div>
   </div>
 </template>
@@ -18,17 +18,17 @@ export default defineComponent({
   name: "Directives",
   setup() {
     const count = ref(0);
-    const isshow = ref(false);
+    const isEven = ref(false);
     const increment = () =>{
       count.value++;
       if(count.value % 2 == 0){
-        isshow.value = true;
+        isEven.value = true;
       }
       else{
-        isshow.value = false;
+        isEven.value = false;
       }
     }
-    return { count, isshow, increment };
+    return { count, isEven, increment };
   },
 });
 </script>

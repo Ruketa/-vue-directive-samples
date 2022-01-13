@@ -1,13 +1,25 @@
 <template>
   <div>
-    <h1>v-bind</h1>
+    <h1>v-model</h1>
     <div class="hstack"> 
-      <button class="hstack-item" @click="increment">increment</button> 
-      <button class="hstack-item" @click="reset">reset</button> 
-      <input type="number" v-bind:value="count"/>
-      <div :style="{fontSize: count + 'pt'}">
-        <p>v-bind test message</p>
-      </div>
+      <h3>Text</h3>
+      <input type="text" v-model="message" placeholder="edit me"/>
+      <p>Message is {{message}}</p>
+    </div>
+    <div class="hstack"> 
+      <h3>CountUp</h3>
+      <input type="number" v-model="count"/>
+      <p>Count is {{count}}</p>
+    </div>
+    <div>
+      <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
+      <label for="jack">Jack</label>
+      <input type="checkbox" id="john" value="John" v-model="checkedNames" />
+      <label for="john">John</label>
+      <input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
+      <label for="mike">Mike</label>
+      <br />
+      <span>Checked names: {{ checkedNames }}</span>
     </div>
   </div>
 </template>
@@ -16,12 +28,18 @@
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: "vbind",
+  name: "vmodel",
   setup() {
-    let count = ref(0);
-    const increment = () => count.value++;
-    const reset = () => count.value= 0;
-    return { count, increment, reset };
+    const message = ref<string>("");
+    const count = ref<number>(0);
+    const checkedNames = ref<Array<string>>([]);
+    setInterval(() => {
+      count.value++;
+      if(count.value > 100){
+        count.value = 0;
+      }
+    }, 1000);
+    return { message, count, checkedNames };
   },
 });
 </script>

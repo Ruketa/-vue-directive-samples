@@ -1,12 +1,19 @@
 <template>
   <div>
     <h1>v-on</h1>
-    <p>click: increment the count value</p>
-    <p>reset: set the count value to 0</p>
     <div class="hstack"> 
-      <button class="hstack-item" @click="increment">increment</button> 
-      <button class="hstack-item" @click="reset">reset</button> 
-      <p class="hstack-item">count : {{count}}</p>
+      <button class="hstack-item" @click="incrementA">incrementA</button> 
+      <button class="hstack-item" @click="resetA">resetA</button> 
+      <p class="hstack-item">countA : {{countA}}</p>
+    </div>
+    <div class="hstack"> 
+      <button class="hstack-item" @click="incrementB">incrementB</button> 
+      <button class="hstack-item" @click="resetB">resetB</button> 
+      <p class="hstack-item">countB : {{countB}}</p>
+    </div>
+    <div class="hstack"> 
+      <button class="hstack-item" @click="incrementA(), incrementB()">incrementBoth</button> 
+      <p class="hstack-item">SUM : {{countA + countB}}</p>
     </div>
   </div>
 </template>
@@ -15,12 +22,15 @@
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: "Directives",
+  name: "vif",
   setup() {
-    const count = ref(0);
-    const increment = () => count.value++;
-    const reset = () => count.value = 0;
-    return { count, increment, reset };
+    const countA = ref(0);
+    const countB = ref(0);
+    const incrementA = () => countA.value++;
+    const resetA = () => countA.value = 0;
+    const incrementB = () => countB.value++;
+    const resetB = () => countB.value = 0;
+    return { countA, countB, incrementA, incrementB, resetA, resetB };
   },
 });
 </script>

@@ -1,8 +1,6 @@
 <template>
   <div>
     <h1>v-show</h1>
-    <p>click: increment the count value</p>
-    <p>if count value is even, show text "VSHOW"</p>
     <div class="hstack"> 
       <button class="hstack-item" @click="increment">increment</button> 
       <p class="hstack-item">count : {{count}}</p>

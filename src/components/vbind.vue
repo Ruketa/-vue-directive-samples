@@ -4,10 +4,11 @@
     <div class="hstack"> 
       <button class="hstack-item" @click="increment">increment</button> 
       <button class="hstack-item" @click="reset">reset</button> 
+      <input type="number" v-bind:value="fontSize"/>
       <input type="number" v-bind:value="count"/>
-      <div :style="{fontSize: count + 'pt'}">
-        <p>v-bind test message</p>
-      </div>
+    </div>
+    <div :style="{fontSize: fontSize + 'pt'}">
+      <p>v-bind test message</p>
     </div>
   </div>
 </template>
@@ -19,9 +20,16 @@ export default defineComponent({
   name: "vbind",
   setup() {
     let count = ref(0);
-    const increment = () => count.value++;
-    const reset = () => count.value= 0;
-    return { count, increment, reset };
+    let fontSize = ref(0);
+    const increment = () => fontSize.value++;
+    const reset = () => fontSize.value= 0;
+    setInterval(() => {
+      count.value++;
+      if(count.value > 100){
+        count.value = 0;
+      }
+    }, 1000);
+    return { count, fontSize, increment, reset };
   },
 });
 </script>
